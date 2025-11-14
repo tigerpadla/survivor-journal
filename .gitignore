@@ -11,3 +11,4 @@ cloudinary_python.txt
 .github/ISSUE_TEMPLATE/
 db.sqlite3
 .vscode/
+blog/fixtures/
