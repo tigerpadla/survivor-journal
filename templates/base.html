@@ -2,7 +2,6 @@
 {% url 'home' as home_url %}
 {% url 'about' as about_url %}
 {% url 'account_login' as login_url %}
-{% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 
 <!DOCTYPE html>
@@ -109,13 +108,18 @@
                         {% endif %}
                     </ul>
                     <span class="navbar-text text-muted">
-                        adventures of a software developer
+                        Adventures of a Software Developer
                     </span>
                 </div>
             </div>
         </nav>
 
         <main class="flex-shrink-0 main-bg">
+            {% if user.is_authenticated %}
+            <p class="text-end m-3">You are logged in as {{ user }}</p>
+            {% else %}
+            <p class="text-end m-3">You are not logged in</p>
+            {% endif %}
             {% block content %}
             <!-- Content Goes here -->
             {% endblock content %}
@@ -124,8 +128,7 @@
         <!-- Footer -->
         <footer class="footer mt-auto py-3 dark-bg">
             <p class="m-0 text-center text-white">
-                {% block copyright %}
-                © 2025 Maksym Karleichuk
+                {% block copyright %} © 2025 Maksym Karleichuk
                 {% endblock copyright %}
             </p>
             <p class="m-0 text-center text-white">
