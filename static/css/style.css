@@ -92,7 +92,13 @@ body {
 }
 
 .profile-image {
-    width: 75%;
+    display:block;
+    width:100%;
+    max-width:400px;
+    height:auto;
+    object-fit:cover;
+    margin:0 auto;
+    border-radius:4px;
 }
 
 .post-link {

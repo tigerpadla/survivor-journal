@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {% load cloudinary %} {% block content %}
 
 <div class="container mt-5">
     <div class="row">
@@ -6,7 +6,7 @@
             {% if "placeholder" in about.profile_image.url %}
             <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
             {% else %}
-            <img src="{{ about.profile_image.url }}" class="profile-image" alt="{{ about.title }}">
+            {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
             {% endif %}
         </div>
         <div class="col-12 col-md-8">
