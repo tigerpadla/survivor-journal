@@ -10,7 +10,11 @@
                 <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/default.jpg' %}" class="scale" alt="placeholder" />
+                {% if "placeholder" in post.featured_image.url %}
+                <img src="{% static 'images/default.jpg' %}" class="scale" alt="placeholder image">
+                {% else %}
+                <img src="{{ post.featured_image.url }}" class="scale" alt="{{ post.title }}">
+                {% endif %}
             </div>
         </div>
     </div>
@@ -22,7 +26,7 @@
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text">{{ post.content | safe }}</p>
+                <article class="card-text">{{ post.content | safe }}</article>
             </div>
         </div>
     </div>
@@ -52,19 +56,9 @@
                     <div id="comment{{ comment.id }}">{{ comment.body | linebreaks }}</div>
                     {% if not comment.approved and comment.author == user %}
                     <p class="approval">This comment is awaiting approval</p>
-                    {% endif %}
-                    {% if user.is_authenticated and comment.author == user %}
-                    <button
-                        class="btn btn-delete"
-                        type="button"
-                        data-comment-id="{{ comment.id }}"
-                    >Delete</button>
-                    <button
-                        class="btn btn-edit"
-                        type="button"
-                        data-comment-id="{{ comment.id }}"
-                        data-comment-body="{{ comment.body|escapejs }}"
-                    >Edit</button>
+                    {% endif %} {% if user.is_authenticated and comment.author == user %}
+                    <button class="btn btn-delete" type="button" data-comment-id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit" type="button" data-comment-id="{{ comment.id }}" data-comment-body="{{ comment.body|escapejs }}">Edit</button>
                     {% endif %}
                 </div>
                 <!-- Our for loop ends here -->
@@ -79,7 +73,7 @@
                 <p>Posting as: {{ user.username }}</p>
                 <form id="commentForm" method="post" style="margin-top: 1.3em">
                     {{ comment_form | crispy }} {% csrf_token %}
-                    <input type="hidden" name="comment_id" id="comment_id" />
+                    <input type="hidden" name="comment_id" id="comment_id">
                     <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
                 </form>
                 {% else %}
@@ -91,57 +85,47 @@
 </div>
 
 <!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1"
-  aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"
-          id="deleteModalLabel">Delete comment?</h5>
-        <button type="button" class="btn-close"
-          data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete your comment?
-        This action cannot be undone.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-          data-bs-dismiss="modal">Close</button>
-        <a id="deleteConfirm" href="#" class="btn
-          btn-danger">Delete</a>
-      </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Are you sure you want to delete your comment? This action cannot be undone.</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-{% endblock content %}
-
-{% block extras %}
+{% endblock content %} {% block extras %}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('commentForm');
-  const hiddenId = document.getElementById('comment_id');
-  const submitBtn = document.getElementById('submitButton');
-  const textarea = document.getElementById('id_body');
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("commentForm");
+        const hiddenId = document.getElementById("comment_id");
+        const submitBtn = document.getElementById("submitButton");
+        const textarea = document.getElementById("id_body");
 
-  document.querySelectorAll('.btn-edit').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (!textarea) return;
-      textarea.value = btn.dataset.commentBody;
-      hiddenId.value = btn.dataset.commentId;
-      if (submitBtn) submitBtn.textContent = 'Update';
-      textarea.focus();
-      window.scrollTo({ top: textarea.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
-    });
-  });
+        document.querySelectorAll(".btn-edit").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                if (!textarea) return;
+                textarea.value = btn.dataset.commentBody;
+                hiddenId.value = btn.dataset.commentId;
+                if (submitBtn) submitBtn.textContent = "Update";
+                textarea.focus();
+                window.scrollTo({ top: textarea.getBoundingClientRect().top + window.scrollY - 100, behavior: "smooth" });
+            });
+        });
 
-  if (form) {
-    form.addEventListener('submit', () => {
-      if (submitBtn) submitBtn.disabled = true;
+        if (form) {
+            form.addEventListener("submit", () => {
+                if (submitBtn) submitBtn.disabled = true;
+            });
+        }
     });
-  }
-});
 </script>
 <script src="{% static 'js/comments.js' %}"></script>
 {% endblock %}
