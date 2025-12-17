@@ -169,3 +169,10 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
+
+/* Auth pages */
+.auth-card {
+    background: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.08);
+}
