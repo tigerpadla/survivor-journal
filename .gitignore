@@ -1,15 +1,62 @@
+# =====================
+# Python bytecode / caches
+# =====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# =====================
+# Environment / virtualenvs
+# =====================
+.venv/
+env/
+venv/
+env.py
+.env
+.envrc
+
+# =====================
+# Django / project files
+# =====================
+*.sqlite3
+db.sqlite3-journal
+*.log
+local_settings.py
+staticfiles/
+media/
+
+# =====================
+# IDEs / editors
+# =====================
+.vscode/
+.idea/
+.spyderproject
+.spyproject
+.ropeproject
+
+# =====================
+# Project-specific / caches
+# =====================
 core.Microsoft*
 core.mongo*
 core.python*
-.venv/
-env.py
-__pycache__/
-*.py[cod]
-node_modules/
-cloudinary_python.txt
-.github/
-.github/ISSUE_TEMPLATE/
-db.sqlite3
-.vscode/
-blog/fixtures/
-staticfiles/
+cloudinary_python.txt  # keep ignored if it contains secrets
+
+# =====================
+# Test / coverage / build artifacts
+# =====================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+*.egg
+*.manifest
+*.spec
