@@ -4,6 +4,11 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from .forms import CommentForm
+from .forms import PostForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.utils.text import slugify
+from django.db.models import Q
 
 # Create your views here.
 
@@ -47,7 +52,15 @@ def post_detail(request, slug):
 
     :template:`blog/post_detail.html`
     """
-    queryset = Post.objects.filter(status=1)
+    # By default only published posts are visible. Allow staff users
+    # and the post's author to view unpublished drafts.
+    if request.user.is_staff:
+        queryset = Post.objects.all()
+    elif request.user.is_authenticated:
+        queryset = Post.objects.filter(Q(status=1) | Q(author=request.user))
+    else:
+        queryset = Post.objects.filter(status=1)
+
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
@@ -147,3 +160,40 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+@login_required
+def create_post(request):
+    """View to create a new Post. Only for authenticated users."""
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            # Ensure new posts are saved as Draft by default. Admins can
+            # change status from the admin panel to publish.
+            post.status = 0
+            # Auto-generate a unique slug from the title if not provided.
+            base_slug = slugify(post.title) or "post"
+            slug = base_slug
+            counter = 1
+            while Post.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            post.slug = slug
+            post.save()
+            # Drafts are not visible to the public post_detail view (which
+            # only shows published posts). Redirect staff to the post, but
+            # regular users to home with a message.
+            if request.user.is_staff or post.status == 1:
+                messages.success(request, "Post created successfully.")
+                return redirect("post_detail", slug=post.slug)
+            else:
+                messages.success(request, "Post saved as draft. An admin can publish it from the admin panel.")
+                return redirect("home")
+        else:
+            messages.error(request, "There was an error creating the post.")
+    else:
+        form = PostForm()
+
+    return render(request, "blog/create_post.html", {"form": form})
