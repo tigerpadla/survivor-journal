@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import About, CollaborateRequest
+from .models import About
 
 
 @admin.register(About)
@@ -10,16 +10,6 @@ class AboutAdmin(SummernoteModelAdmin):
     """
     summernote_fields = ('content',)
 
-# Note: admin.ModelAdmin is the standard way of registering
-#       model with the admin panel. I do it differently
-#       above because we are supplying Summernote fields.
-#       If you want to customise the admin panel view in your
-#       other project, then inherit from admin.ModelAdmin like
-#       I do below.
-
-@admin.register(CollaborateRequest)
-class CollaborateRequestAdmin(admin.ModelAdmin):
-    """
-    Lists message and read fields for display in admin
-    """
-    list_display = ('message', 'read',)
+# Note: CollaborateRequest model is not present in `about.models`.
+# The migration `0002_collaboraterequest.py` exists (historical),
+# so we avoid registering the model here to prevent import errors.
