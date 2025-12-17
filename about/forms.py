@@ -1,14 +1,12 @@
 from django import forms
-from .models import CollaborateRequest
 
 
-class CollaborateForm(forms.ModelForm):
+class CollaborateForm(forms.Form):
     """
-    Form class for users to request a collaboration 
+    Simple form for collaboration requests. This is a plain
+    Form (not a ModelForm) because the CollaborateRequest model
+    was removed.
     """
-    class Meta:
-        """
-        Specify the django model and order of the fields
-        """
-        model = CollaborateRequest
-        fields = ('name', 'email', 'message')
+    name = forms.CharField(max_length=200)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)

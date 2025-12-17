@@ -22,8 +22,14 @@ def about_me(request):
     if request.method == "POST":
         collaborate_form = CollaborateForm(data=request.POST)
         if collaborate_form.is_valid():
-            collaborate_form.save()
-            messages.add_message(request, messages.SUCCESS, "Collaboration request received! I endeavour to respond within 2 working days.")
+            # The CollaborateRequest model was removed; do not attempt to save.
+            # We still acknowledge the submission to the user. If you want to
+            # persist requests later, replace this with email sending or
+            # another storage mechanism.
+            messages.success(
+                request,
+                "Collaboration request received! I endeavour to respond within 2 working days.",
+            )
             
     about = About.objects.all().order_by('-updated_on').first()
     collaborate_form = CollaborateForm()
