@@ -12,8 +12,15 @@ This is not just a log of tasks, it is a place for students to record their tran
 MOSCOW Prioritisation
 
 Wireframes
+
+Home Page
 ![alt text](images/wireframe.png)
 
+Sign up Page
+![alt text](images/wireframe1.png)
+
+About us Page
+![alt text](images/wireframe2.png)
 ## Key Features
 
 ## Developer Notes
