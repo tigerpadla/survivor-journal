@@ -14,7 +14,8 @@ body {
 }
 
 .navbar {
-    background-color: var(--panel) !important;
+    /* Match the footer background for a consistent header/footer look */
+    background-color: #0b1220 !important;
 }
 
 .navbar .nav-link {
@@ -75,7 +76,7 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: rgba(34, 211, 238, 0.8);
+    background-color: rgba(225, 29, 72, 0.9);
 }
 
 .scale {
@@ -144,6 +145,12 @@ body {
     color: var(--accent-strong);
 }
 
+/* Ensure the GitHub Font Awesome icon in the footer is white */
+.footer .fa-github,
+.footer .fab.fa-github {
+    color: #ffffff !important;
+}
+
 .post-title {
     margin-top: 10%;
     margin-left: 5%;
@@ -156,14 +163,16 @@ body {
 
 .btn-signup,
 .btn-edit {
-    background-color: #0ea5e9;
-    color: #0b1220;
+    background-color: rgba(225, 29, 72, 1);
+    color: #ffffff;
+    border-color: rgba(225, 29, 72, 1);
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #22d3ee;
-    color: #0b1220;
+    background-color: rgba(225, 29, 72, 0.9);
+    color: #ffffff;
+    border-color: rgba(225, 29, 72, 0.9);
 }
 
 .link {
@@ -209,4 +218,71 @@ body {
     color: var(--text);
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.45);
+}
+
+/* Create post page: darker fields and red submit button */
+.create-post .form-control,
+.create-post textarea,
+.create-post select {
+    background-color: #0b1220; /* dark panel matching header/footer */
+    color: var(--text);
+    border: 1px solid rgba(225, 29, 72, 0.25);
+}
+.create-post .form-control:focus,
+.create-post textarea:focus,
+.create-post select:focus {
+    background-color: #0b1220;
+    color: var(--text);
+    border-color: rgba(225, 29, 72, 0.6);
+    box-shadow: none;
+}
+.create-post label,
+.create-post .form-label {
+    color: var(--text);
+}
+.create-post .btn-primary {
+    background-color: rgba(225, 29, 72, 1) !important;
+    border-color: rgba(225, 29, 72, 1) !important;
+    color: #ffffff !important;
+}
+.create-post .btn-primary:hover {
+    background-color: rgba(225, 29, 72, 0.9) !important;
+    border-color: rgba(225, 29, 72, 0.9) !important;
+}
+
+/* Apply the same dark field styling to login, signup and comment forms */
+.login .form-control,
+.login textarea,
+.login select,
+.signup .form-control,
+.signup textarea,
+.signup select,
+#commentForm .form-control,
+#commentForm textarea,
+#commentForm select {
+    background-color: #0b1220;
+    color: var(--text);
+    border: 1px solid rgba(225, 29, 72, 0.25);
+}
+.login .form-control:focus,
+.signup .form-control:focus,
+#commentForm .form-control:focus,
+.login textarea:focus,
+.signup textarea:focus,
+#commentForm textarea:focus,
+.login select:focus,
+.signup select:focus,
+#commentForm select:focus {
+    background-color: #0b1220;
+    color: var(--text);
+    border-color: rgba(225, 29, 72, 0.6);
+    box-shadow: none;
+}
+.login label,
+.signup label,
+#commentForm label,
+.login .form-label,
+.signup .form-label,
+#commentForm .form-label {
+    color: var(--text);
 }

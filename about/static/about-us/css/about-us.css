@@ -16,7 +16,28 @@
     font-size: 1.2rem;
     margin-top: 1rem;
 }
-
-.center-text {
+/* Center about text inside its column */
+.aboutus-text {
     text-align: center;
+}
+
+/* Vertically center the text column beside the image */
+.aboutus-spacing .row {
+    align-items: center;
+}
+
+/* Ensure the text column centers its content vertically across breakpoints */
+.aboutus-spacing .col-md-8,
+.aboutus-spacing .col-md-6 {
+    display: flex;
+    align-items: center;
+}
+
+/* For very small screens keep normal flow */
+@media (max-width: 576px) {
+    .aboutus-spacing .col-md-8,
+    .aboutus-spacing .col-md-6 {
+        display: block;
+        align-items: normal;
+    }
 }
