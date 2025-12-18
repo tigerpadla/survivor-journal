@@ -5,13 +5,7 @@
     <breakpoint class="aboutus-spacing">
     <div class="row">
         <div class="col-12 col-md-4 text-center">
-            {% if about and about.profile_image and about.profile_image.url and "placeholder" in about.profile_image.url %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
-            {% elif about and about.profile_image and about.profile_image.url %}
-                {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
-            {% else %}
-                <img src="{% static 'images/max.jpg' %}" class="profile-image" alt="placeholder image">
-            {% endif %}
+                <img src="{% static 'about-us/image/max.jpg' %}" class="profile-image" alt="placeholder image">
         </div>
         <div class="col-12 col-md-8">
             <p class="aboutus-text">Hi! I’m Max, a passionate aspiring Full Stack Developer with a diverse professional background in hospitality, retail, and aviation. I’m currently completing a 16-week High-Performance Full Stack Development Bootcamp with Code Institute, in partnership with Tech Industry Alliance Skillnet. I enjoy solving problems, learning new technologies, and collaborating on projects that challenge me to grow both technically and professionally.</p>
@@ -21,61 +15,26 @@
         <breakpoint class="aboutus-spacing">
         <div class="row">
         <div class="col-12 col-md-4 text-center">
-             {% if about and about.profile_image and about.profile_image.url and "placeholder" in about.profile_image.url %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
-            {% elif about and about.profile_image and about.profile_image.url %}
-                {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
-            {% else %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
-            {% endif %}
+                <img src="{% static 'about-us/image/josh.png' %}" class="profile-image" alt="placeholder image">
         </div>
          <div class="col-12 col-md-8">
-            <p class="aboutus-text">fullstack web developer</p>
+            <p class="aboutus-text center-text">I’m Josh — a full‑stack development student wrapping up an intensive 16‑week journey into coding and building web applications. Over the past few months, I’ve gained hands‑on experience with Python, Django, SQL, and front‑end technologies, while also learning how to manage projects using user stories, ERDs, and Agile practices.</p>
         </div>
         </div>
         </breakpoint>
         <breakpoint class="aboutus-spacing">
         <div class="row">
          <div class="col-12 col-md-4 text-center">
-             {% if about and about.profile_image and about.profile_image.url and "placeholder" in about.profile_image.url %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
-            {% elif about and about.profile_image and about.profile_image.url %}
-                {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
-            {% else %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
-            {% endif %}
+            <img src="{% static 'about-us/image/rhys.jpg' %}" class="profile-image" alt="placeholder image">
         </div>
          <div class="col-12 col-md-8">
-            <p class="aboutus-text">fullstack web developer</p>
-        </div>
-        <div class="col-12 col-md-4 text-center">
-            {% if about and about.profile_image and about.profile_image.url and "placeholder" in about.profile_image.url %}
-                <img src="{% static 'images/josh.png' %}" class="profile-image" alt="placeholder image">
-            {% elif about and about.profile_image and about.profile_image.url %}
-                {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
-            {% else %}
-                <img src="{% static 'images/josh.png' %}" class="profile-image" alt="placeholder image">
-            {% endif %}
-        </div>
-        <div class="col-12 col-md-8">
-            <p class="aboutus-text">I’m Josh — a full‑stack development student wrapping up an intensive 16‑week journey into coding and building web applications. Over the past few months, I’ve gained hands‑on experience with Python, Django, SQL, and front‑end technologies, while also learning how to manage projects using user stories, ERDs, and Agile practices.</p>
-        </div>
-        <div class="col-12 col-md-8">
-            <h2>{{ about.title }}</h2>
-            {{ about.content | safe }}
-        </div>
+            <p class="aboutus-text">Passionate Fullstack Web Developer with expertise in building dynamic, user-friendly applications from front-end design to back-end architecture. Skilled in modern frameworks like React and Django with a strong foundation in databases and cloud deployment. Adept at turning complex problems into elegant solutions, collaborating across teams, and delivering scalable products that enhance user experiences. Always eager to learn new technologies.</p>
         </div>
         </breakpoint>
         <breakpoint class="aboutus-spacing">
         <div class="row">
          <div class="col-12 col-md-4 text-center">
-             {% if about and about.profile_image and about.profile_image.url and "placeholder" in about.profile_image.url %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
-            {% elif about and about.profile_image and about.profile_image.url %}
-                {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
-            {% else %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
-            {% endif %}
+                <img src="{% static 'about-us/image/default.jpg' %}" class="profile-image" alt="placeholder image">
         </div>
          <div class="col-12 col-md-8">
             <p class="aboutus-text">fullstack web developer</p>

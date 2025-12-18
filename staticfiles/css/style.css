@@ -41,7 +41,7 @@ body {
 }
 
 .red-o {
-    color: var(--accent-strong);
+    color: var(--accent-strong) !important;
 }
 
 .thin {
@@ -131,6 +131,7 @@ body {
     object-fit:cover;
     margin:0 auto;
     border-radius:4px;
+    padding-top: 1rem;
 }
 
 .post-link {
@@ -202,12 +203,10 @@ body {
     color: #f9a8d4;
 }
 
-.profile-image {
-    display:block;
-    width:100%;
-    max-width:400px;
-    height:auto;
-    object-fit:cover;
-    margin:0 auto;
-    border-radius:4px;
+/* Auth pages */
+.auth-card {
+    background: var(--panel);
+    color: var(--text);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.45);
 }
