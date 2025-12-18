@@ -31,4 +31,15 @@
         </div>
     </div>
 </div>
+<script>
+// Hide "forgot" links that may be injected by other templates/libraries
+document.addEventListener('DOMContentLoaded', function () {
+    var anchors = document.querySelectorAll('a[href*="password"], a[href*="reset"]');
+    anchors.forEach(function (a) {
+        if (a.textContent && /forgot/i.test(a.textContent)) {
+            a.style.display = 'none';
+        }
+    });
+});
+</script>
 {% endblock %}
