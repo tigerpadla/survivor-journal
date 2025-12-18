@@ -74,11 +74,13 @@
             {% elif about and about.profile_image and about.profile_image.url %}
                 {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
             {% else %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
+                <img src="{% static 'images/david.jpg' %}" class="profile-image" alt="an image of David">
             {% endif %}
         </div>
          <div class="col-12 col-md-8">
-            <p class="aboutus-text">fullstack web developer</p>
+            <p class="aboutus-text">Hi, I’m David, a Junior Full Stack Developer currently completing Code Institute’s intensive 16-week Full Stack Development course with AI Pair Programming. I have hands-on experience building responsive, data-driven web applications using modern front-end and back-end technologies.
+
+Through this programme, I’ve developed strong problem-solving skills, practical experience with AI-assisted pair programming, and a passion for writing clean, maintainable code. I’m eager to continue learning and contribute to real-world development projects as a junior developer.</p>
         </div>
     </div>
     </breakpoint>
