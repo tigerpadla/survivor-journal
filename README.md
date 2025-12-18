@@ -6,6 +6,17 @@ This is not just a log of tasks, it is a place for students to record their tran
 
 ## Table of Contents
 
+- [Overview](#overview)
+- [UX Design](#ux-design)
+- [Project Planning](#project-planning)
+- [Key Features](#key-features)
+- [Developer Notes](#developer-notes)
+- [Deployment](#deployment)
+- [Libraries & Frameworks](#libraries--frameworks)
+- [Languages & Technologies Used](#languages--technologies-used)
+- [AI Implementation](#ai-implementation)
+- [Credits](#credits)
+
 ## UX Design
 Clean, readable layout focused on content and forms
 Consistent visual language: Bootstrap + CSS
@@ -58,6 +69,51 @@ Mobile responsive layout
 - Admin Panel
 Admin view for managing users, monitoring shared entries
 ## Developer Notes
+
+- Prerequisites: Python 3.12+, virtualenv, Git. Optional: PostgreSQL.
+- Setup:
+	1. Create venv and install deps
+		 ```bash
+		 python -m venv .venv
+		 source .venv/bin/activate
+		 pip install -r requirements.txt
+		 ```
+	2. Environment variables (create an `env.py` or export in shell):
+		 - `SECRET_KEY`: any random string for local dev.
+		 - `DATABASE_URL`: set to a valid URL (examples below).
+		 - Optional Cloudinary: `CLOUDINARY_URL` if you use Cloudinary images.
+	3. Static files (required since `DEBUG=False`):
+		 ```bash
+		 python manage.py collectstatic --noinput
+		 ```
+	4. Run server:
+		 ```bash
+		 python manage.py runserver
+		 ```
+
+- Database URLs (dj-database-url):
+	- SQLite (simple local dev): `sqlite:///db.sqlite3`
+	- Postgres (local): `postgres://USER:PASSWORD@127.0.0.1:5432/DBNAME`
+	- Heroku-style: `postgres://...` or `postgresql://...`
+	- If you see `UnknownSchemeError` ensure the value is not empty and uses a known scheme (e.g., `sqlite:///...`, `postgres://...`). Avoid quotes that render as `b''` or whitespace.
+
+- Static files:
+	- Author source assets under `static/` (e.g., `static/images/...`).
+	- Do NOT edit `staticfiles/` directly; it is build output from `collectstatic`.
+	- In templates use `{% load static %}` and `{% static 'images/your-file.png' %}`.
+
+- Auth templates and styling:
+	- allauth pages inherit the site layout via `templates/allauth/layouts/base.html -> extends base.html`, so your CSS and Bootstrap are loaded for login/logout/signup.
+	- Logout page uses a centered layout and `.btn-delete` accent; adjust in `static/css/style.css` if needed.
+
+- Images on About page:
+	- Place images in `static/images/` and reference with `{% static 'images/name.jpg' %}`.
+	- Example used: `static/images/david.jpg`.
+
+- Common issues:
+	- Static not loading: verify `STATIC_URL=/static/`, run `collectstatic`, and hard refresh the browser.
+	- DB errors: confirm `DATABASE_URL` is set and correctly formatted; for quick local dev use SQLite URL shown above.
+	- Template overrides: if an allauth page looks unstyled, ensure the layout override exists at `templates/allauth/layouts/base.html`.
 
 ## Deployment
 
