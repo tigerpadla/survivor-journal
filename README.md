@@ -11,6 +11,8 @@ This is not just a log of tasks, it is a place for students to record their tran
 ## Project Planning
 MOSCOW Prioritisation
 
+ERD Diagram
+![alt text](images/erd.png)
 Wireframes
 
 Home Page
