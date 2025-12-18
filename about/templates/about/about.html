@@ -74,7 +74,7 @@
             {% elif about and about.profile_image and about.profile_image.url %}
                 {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
             {% else %}
-                <img src="{% static 'images/david.jpg' %}" class="profile-image" alt="an image of David">
+                <img src="{% static '/images/david.jpg' %}" class="profile-image" alt="an image of David">
             {% endif %}
         </div>
          <div class="col-12 col-md-8">
