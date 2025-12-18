@@ -1,0 +1,18 @@
+.aboutus-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.aboutus-images {
+    display: flex;
+}
+
+.aboutus-spacing {
+    padding: 1rem;
+}
+
+.aboutus-text {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
