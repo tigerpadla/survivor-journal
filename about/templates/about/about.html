@@ -10,11 +10,11 @@
             {% elif about and about.profile_image and about.profile_image.url %}
                 {% cloudinary about.profile_image width=400 height=400 crop="fill" gravity="face" alt=about.title class="profile-image" %}
             {% else %}
-                <img src="{% static 'images/nobody.jpg' %}" class="profile-image" alt="placeholder image">
+                <img src="{% static 'images/max.jpg' %}" class="profile-image" alt="placeholder image">
             {% endif %}
         </div>
         <div class="col-12 col-md-8">
-            <p class="aboutus-text">fullstack web developer</p>
+            <p class="aboutus-text">Hi! I’m Max, a passionate aspiring Full Stack Developer with a diverse professional background in hospitality, retail, and aviation. I’m currently completing a 16-week High-Performance Full Stack Development Bootcamp with Code Institute, in partnership with Tech Industry Alliance Skillnet. I enjoy solving problems, learning new technologies, and collaborating on projects that challenge me to grow both technically and professionally.</p>
         </div>
         </div>
         </breakpoint>
