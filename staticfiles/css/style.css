@@ -163,14 +163,16 @@ body {
 
 .btn-signup,
 .btn-edit {
-    background-color: #0ea5e9;
-    color: #0b1220;
+    background-color: rgba(225, 29, 72, 1);
+    color: #ffffff;
+    border-color: rgba(225, 29, 72, 1);
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #22d3ee;
-    color: #0b1220;
+    background-color: rgba(225, 29, 72, 0.9);
+    color: #ffffff;
+    border-color: rgba(225, 29, 72, 0.9);
 }
 
 .link {
@@ -246,4 +248,41 @@ body {
 .create-post .btn-primary:hover {
     background-color: rgba(225, 29, 72, 0.9) !important;
     border-color: rgba(225, 29, 72, 0.9) !important;
+}
+
+/* Apply the same dark field styling to login, signup and comment forms */
+.login .form-control,
+.login textarea,
+.login select,
+.signup .form-control,
+.signup textarea,
+.signup select,
+#commentForm .form-control,
+#commentForm textarea,
+#commentForm select {
+    background-color: #0b1220;
+    color: var(--text);
+    border: 1px solid rgba(225, 29, 72, 0.25);
+}
+.login .form-control:focus,
+.signup .form-control:focus,
+#commentForm .form-control:focus,
+.login textarea:focus,
+.signup textarea:focus,
+#commentForm textarea:focus,
+.login select:focus,
+.signup select:focus,
+#commentForm select:focus {
+    background-color: #0b1220;
+    color: var(--text);
+    border-color: rgba(225, 29, 72, 0.6);
+    box-shadow: none;
+}
+.login label,
+.signup label,
+#commentForm label,
+.login .form-label,
+.signup .form-label,
+#commentForm .form-label {
+    color: var(--text);
 }
