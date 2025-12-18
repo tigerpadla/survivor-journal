@@ -216,6 +216,8 @@ body {
     color: var(--text);
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.45);
+<<<<<<< HEAD
+=======
 }
 
 /* Create post page: darker fields and red submit button */
@@ -246,4 +248,5 @@ body {
 .create-post .btn-primary:hover {
     background-color: rgba(225, 29, 72, 0.9) !important;
     border-color: rgba(225, 29, 72, 0.9) !important;
+>>>>>>> main
 }
