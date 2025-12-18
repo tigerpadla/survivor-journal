@@ -1,16 +1,47 @@
 body {
-    background-color: #F9FAFC;
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+:root {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --card: #111827;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #22d3ee;
+    --accent-strong: #e11d48;
+}
+
+.navbar {
+    background-color: var(--panel) !important;
+}
+
+.navbar .nav-link {
+    color: var(--text);
+}
+
+.navbar .nav-link:hover {
+    color: var(--accent);
+}
+
+.navbar .nav-link.active {
+    color: var(--accent-strong) !important;
+}
+
+.navbar .navbar-text {
+    color: var(--muted);
 }
 
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: var(--text);
 }
 
 .red-o {
-    color: #E84610;
+    color: var(--accent-strong) !important;
 }
 
 .thin {
@@ -18,20 +49,21 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: var(--panel);
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #0b1220;
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: var(--bg);
 }
 
 .card {
     border: none;
     background-color: transparent;
+    color: var(--text);
 }
 
 .image-container {
@@ -43,7 +75,7 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #188181;
+    background-color: rgba(34, 211, 238, 0.8);
 }
 
 .scale {
@@ -52,7 +84,7 @@ body {
 }
 
 .author {
-    color: white;
+    color: #0b1220;
     margin: 4px;
     text-transform: uppercase;
 }
@@ -67,8 +99,8 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
-    color: white;
+    background-color: var(--accent-strong);
+    color: var(--text);
     position: relative;
 }
 
@@ -84,7 +116,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: var(--accent-strong);
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -103,12 +135,12 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: var(--text);
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: var(--accent-strong);
 }
 
 .post-title {
@@ -118,61 +150,62 @@ body {
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: var(--muted);
 }
 
 .btn-signup,
 .btn-edit {
-    background-color: #188181;
-    color: #fff;
+    background-color: #0ea5e9;
+    color: #0b1220;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #22d3ee;
+    color: #0b1220;
 }
 
 .link {
-    color: #23BBBB;
+    color: var(--accent);
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: var(--text);
     text-decoration: underline;
 }
 
 .btn-like {
-    color: #E84610;
+    color: var(--accent-strong);
     border: none;
     background: transparent;
 }
 
 .btn-delete {
-    color: #fff;
-    background: #E84610;
+    color: #0b1220;
+    background: var(--accent-strong);
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #f43f5e;
     background: transparent;
     border: none;
 }
 
 .faded {
-    color: rgb(172, 175, 175);
+    color: var(--muted);
 }
 
 .approval {
-    color: rgb(222, 146, 168);
+    color: #f9a8d4;
 }
 
 /* Auth pages */
 .auth-card {
-    background: #ffffff;
+    background: var(--panel);
+    color: var(--text);
     border-radius: 0.5rem;
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.45);
 }
